@@ -7,6 +7,7 @@ gem 'json'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'mysql2'
 gem 'active_model_serializers', :github => 'rails-api/active_model_serializers'
+gem 'sqlite3'
 gem 'requirejs-rails', '= 0.9.1'
 gem 'jquery-rails', '>= 1.0.17'
 
