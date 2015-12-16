@@ -1,0 +1,2 @@
+#!/bin/sh -
+exec rails server -e production
