@@ -1,0 +1,19 @@
+#!/bin/sh -
+#
+# Setup and start Rails production server on NearlyFreeSpeech.net
+#
+set -eu
+sleep 5
+echo
+echo
+echo "starting $0"
+id
+set -x
+cd "$(dirname "$0")"
+nice -n 20 git submodule update --init --recursive
+bundle check || nice -n 20 bundle install --path .bundle
+# TODO: There's some bug in our code that causes db:seed to fail.
+# TODO: When it's fixed, a simple 'db:setup' should work.
+RAILS_ENV=production nice -n 20 bundle exec rake db:create db:migrate
+RAILS_ENV=production nice -n 20 bundle exec rake db:seed || true
+exec rails server -e production -p 8080
