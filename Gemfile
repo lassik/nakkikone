@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'capistrano'
-gem 'rvm-capistrano'
+gem 'rvm-capistrano', :require => false
 gem 'rake'
 
 gem 'rails', '3.2.6'
