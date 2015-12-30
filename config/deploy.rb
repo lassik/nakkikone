@@ -41,4 +41,4 @@ namespace :deploy do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
-after 'deploy:update_code', 'deploy:symlink_shared'
+after 'deploy:finalize_update', 'deploy:symlink_shared'
