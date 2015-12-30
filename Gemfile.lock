@@ -162,6 +162,7 @@ DEPENDENCIES
   mysql2
   pry-rails
   rails (= 3.2.6)
+  rake
   requirejs-rails (= 0.9.5)
   rvm-capistrano
   sass-rails (~> 3.2.3)

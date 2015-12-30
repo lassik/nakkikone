@@ -2,6 +2,7 @@
 # set :rvm_ruby_string, '1.9.3-p194'
 # set :rvm_type, :user
 require "rvm/capistrano"
+require "bundler/capistrano"
 
 set :application, "nakkikone"
 
