@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'capistrano'
 gem 'rvm-capistrano'
+gem 'rake'
 
 gem 'rails', '3.2.6'
 gem 'json'
