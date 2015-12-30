@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'capistrano'
+gem 'rvm-capistrano'
 
 gem 'rails', '3.2.6'
 gem 'json'
