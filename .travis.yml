@@ -5,3 +5,6 @@ script:
   - RAILS_ENV=test bundle exec rake db:migrate test
 before_script:
   - RAILS_ENV=test bundle exec rake db:create
+before_install:
+  - gem update --system 1.8.24
+  - gem --version
