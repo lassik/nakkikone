@@ -1,6 +1,8 @@
+[![Build Status](https://travis-ci.org/EntropyRy/nakkikone.svg)](https://travis-ci.org/EntropyRy/nakkikone)
+
 # Nakkikone
 
-Tästä tulee superhieno uusi nakkikone teknoklubeille.
+Työkalu masinoida tapahtumaan tarvittavat työvuorot. Tarkoitus olisi tehdä käyttäjä ystävällinen, jottei tarvitsi korkeakoulututkintoa tämän käyttämiseen.
 
 ## Kehitysympäristön asennus
 
@@ -17,25 +19,16 @@ Tästä tulee superhieno uusi nakkikone teknoklubeille.
 ## Kontribuointi
 
 Tee tästä projektista Githubissa oma forkki ja luo tekemääsi ominaisuutta varten
-oma branch. Kun koet olevasi valmis, lähetä minulle pull request.
+oma branch. Kun koet olevasi valmis, lähetä pull request.
 
 ## Testaaminen
 
-Kirjoitetaan mahdollisimman kattavat yksikkötestit. Noottia tulee, jos testit
-puuttuvat.
+Olisi suotavaa että uuden toiminnallisuuden yhteydessä olisi toiminnallisuus regressio testauksen piirissä, helpottaa ihmisten ylläpitoa.
 
-Projekti käyttää CI-ohjelmana travisia, jonka voi ja joka myös kannattaa
-virittää omaan forkiin käyttöön. Pitäisi onnistua helposti osoitteessa
-http://travis-ci.org.
+Projekti käyttää CI-ohjelmana travisia, jonka voi ja joka myös kannattaa virittää omaan forkiin käyttöön. Pitäisi onnistua helposti osoitteessa http://travis-ci.org.
 
-Masterin travis build löytyy täältä:
-
-http://travis-ci.org/#!/pimeys/nakkikone
-
-Testien tila:
-
-[![Testien tila](https://secure.travis-ci.org/pimeys/nakkikone.png?branch=master)](http://travis-ci.org/pimeys/nakkikone)
+Masterin travis build löytyy täältä: https://travis-ci.org/EntropyRy/nakkikone
 
 ## Deployaaminen
 
-Nakkikoneen deploymaamiseen on kaytossa capistrano. Konfiguroi `entropy-host` ssh-alias että deployment koneelta on yhteys hostille ja aja rootissa `cap deploy` deployaaksesi uusin `master`in versio liveksi. 
+Nakkikoneen deploymaamiseen on kaytossa capistrano. Konfiguroi `entropy-host` ssh-alias että deployment koneelta on yhteys hostille ja aja projektin rootissa `cap deploy` deployaaksesi uusin `master`in versio liveksi. 
