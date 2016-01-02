@@ -6,7 +6,7 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 
-# Creating admin user:  
+# Creating admin user:
 
 # Change email/password accordingly before deploying to production to
 # ensure safety, rembemer that this files history is hosted at github.
@@ -21,6 +21,16 @@ adminUser = User.create({ :name => 'webmaster',
 # Development seeds:
 # You should comment these out during production deployments
 
+# 0. Nakkitype infos
+[
+  {:title "backup", :description "reserve member"},
+  {:title "selling", :description "need sell stuff"},
+  {:title "door", :description "bouncer"},
+  {:title "visual controller", :description "VJ"}
+].each{ |info|
+  NakkitypeInfo.create(info)
+}
+
 # 1. Party
 example_party = Party.create({ :title => 'Example Party!',
                                :description => 'Party specific descriptions, notes to participants. This will be shown in public side as well',
@@ -30,16 +40,15 @@ example_party = Party.create({ :title => 'Example Party!',
 
 # 2. Nakkittypes and nakkis:
 # Generic nakki pattern, so that we see table forms properly 
-
 [
- {:name => "backup",    :start => 3, :end => 4},
- {:name => "selling-1", :start => 0, :end => 6},
- {:name => "selling-2", :start => 0, :end => 6},
- {:name => "door-1",    :start => 0, :end => 4},
- {:name => "door-2",    :start => 2, :end => 5},
- {:name => "visual controller",        :start => 0, :end => 6}
+ {:info_id => 1, :start => 3, :end => 4},
+ {:info_id => 2, :start => 0, :end => 6},
+ {:info_id => 2, :start => 0, :end => 6},
+ {:info_id => 3, :start => 0, :end => 4},
+ {:info_id => 3, :start => 2, :end => 5},
+ {:info_id => 4, :start => 0, :end => 6}
 ].each{ |type|
-  nakkitype = example_party.nakkitypes.create(:name => type[:name])
+  nakkitype = example_party.nakkitypes.create(:nakkitype_info_id => type[:info_id])
   (type[:start]..type[:end]).each{ |i| nakkitype.nakkis.create(:slot  => i) } 
 }
 
@@ -88,18 +97,18 @@ aux_nakki.user = basicUser2
 aux_nakki.save
 
 # 6. Vanilla party without parcipitants
-example_party = Party.create({ :title => 'Party Template?',
+example_party = Party.create({ :title => 'Vanilla party template',
                                :description => 'Party specific descriptions, notes to participants. This will be shown in public side as well',
                                :date => DateTime.now.end_of_day.beginning_of_hour,
                                :info_date => DateTime.now.end_of_day.beginning_of_hour
                              })
 [
- {:name => "selling-1", :start => 0, :end => 6},
- {:name => "selling-2", :start => 0, :end => 6},
- {:name => "door-1",    :start => 0, :end => 4},
- {:name => "door-2",    :start => 2, :end => 5},
- {:name => "VJ",        :start => 0, :end => 6}
+ {:info_id => 2, :start => 0, :end => 6},
+ {:info_id => 2, :start => 0, :end => 6},
+ {:info_id => 3, :start => 0, :end => 4},
+ {:info_id => 3, :start => 2, :end => 5},
+ {:info_id => 4, :start => 0, :end => 6}
 ].each{ |type|
-  nakkitype = example_party.nakkitypes.create(:name => type[:name])
+  nakkitype = example_party.nakkitypes.create(:nakkitype_info_id => type[:info_id])
   (type[:start]..type[:end]).each{ |i| nakkitype.nakkis.create(:slot  => i) } 
 }
