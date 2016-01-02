@@ -1,10 +1,13 @@
 language: ruby
 rvm:
   - 1.9.3
-script:
-  - RAILS_ENV=test bundle exec rake db:migrate test
-before_script:
-  - RAILS_ENV=test bundle exec rake db:create
+services:
+  - mysql
 before_install:
   - gem update --system 1.8.24
   - gem --version
+  - cp config/database.yml.sample config/database.yml
+before_script:
+  - RAILS_ENV=test bundle exec rake db:create db:migrate
+script:
+  - RAILS_ENV=test bundle exec rake test
