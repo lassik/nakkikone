@@ -23,10 +23,10 @@ adminUser = User.create({ :name => 'webmaster',
 
 # 0. Nakkitype infos
 [
-  {:title "backup", :description "reserve member"},
-  {:title "selling", :description "need sell stuff"},
-  {:title "door", :description "bouncer"},
-  {:title "visual controller", :description "VJ"}
+  {:title => "backup", :description => "reserve member"},
+  {:title => "selling", :description => "need sell stuff"},
+  {:title => "door", :description => "bouncer"},
+  {:title => "visual controller", :description => "VJ"}
 ].each{ |info|
   NakkitypeInfo.create(info)
 }
