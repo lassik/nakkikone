@@ -10,7 +10,12 @@ class NakitController < ApplicationController
 
   def update
     nakki = Nakki.find(params[:id])
-    nakki.user = current_user
+    if nakki.user.nil? || current_user.role == "admin"
+       nakki.user = current_user
+    else
+      render :status => 409, :text => "nakki has allready been reserved"
+      return
+    end
 
     if nakki.save
       render :json => nakki
