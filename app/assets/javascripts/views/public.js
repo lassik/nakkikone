@@ -12,8 +12,9 @@ define([
     'components/notification-area',
     'components/aux-jobs',
     'bs',
-    'hbs!templates/public-screen'
-], function($, _, bb, collections, models, partyViewer, nakkiInfoDescriptionViewer, nakkiTable, assignForm, notificationArea, auxJobs, bs, publicScreen) {
+    'hbs!templates/public-screen',
+    'hbs!templates/not-found-screen'
+], function($, _, bb, collections, models, partyViewer, nakkiInfoDescriptionViewer, nakkiTable, assignForm, notificationArea, auxJobs, bs, publicScreen, notFoundScreen) {
 
     var vent = {};
     _.extend(vent, bb.Events);
@@ -21,10 +22,6 @@ define([
     var nakit = new collections.Nakit();
 
     var nakkiInfos = new collections.NakkiInfosForParty();
-
-    //todo move to separate error-handling-module
-    var _error = function(col, error) {
-    };
 
     var AuxUsers = collections.AuxUsers.extend({
 	resource: 'aux_parcipitants_names'
@@ -76,6 +73,15 @@ define([
 	    nakkiInfos.fetch({success: _ready, error: _error});
 	    auxUsers.fetch({success: _ready, error: _error});
 	}, error: _error});
+
+        //todo move to separate error-handling-module
+        function _error(col, error) {
+          if (error.status === 404) {
+	    rootel.html(notFoundScreen);
+	  } else {
+	    console.error("errorrrrr!!! abortasdvasld;fkjasjdf,,,,, HALT");
+	  }
+	};
     };
 
     return {

@@ -3,7 +3,13 @@ class PartiesController < ApplicationController
   skip_before_filter :admin_access, :only => [:show, :index]
 
   def index
-    render :json => Party.all, :root => false
+    all_parties = Party.all
+
+    if current_user.role != "admin"
+      all_parties = all_parties.select { |p| is_party_active(p) }
+    end
+
+    render :json => all_parties, :root => false
   end
 
   def update
@@ -41,12 +47,12 @@ class PartiesController < ApplicationController
     if (params[:by_title])
       party = Party.where(:title => params[:id]).first
     elsif (params[:id].to_i == 0) #TODO remove and resolve in frontend.
-      party = Party.order("date DESC").first
+      party = Party.order("date ASC").select { |p| is_party_active(p) }.first
     else
       party = Party.find(params[:id])
     end
 
-    if party
+    if party && is_party_active(party) || current_user.role == "admin"
       render :json => party
     else
       render :status => 404, :text => "not found"
@@ -56,5 +62,10 @@ class PartiesController < ApplicationController
   def destroy
     Party.destroy(params[:id])
     render :json => {}
+  end
+
+  private
+  def is_party_active(party)
+    3.days.ago < party.date && party.date < 4.weeks.from_now
   end
 end
