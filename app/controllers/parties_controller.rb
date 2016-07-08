@@ -52,7 +52,7 @@ class PartiesController < ApplicationController
       party = Party.find(params[:id])
     end
 
-    if party && is_party_active(party) || current_user.role == "admin"
+    if party && (is_party_active(party) || current_user.role == "admin")
       render :json => party
     else
       render :status => 404, :text => "not found"
