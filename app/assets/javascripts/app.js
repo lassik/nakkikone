@@ -18,8 +18,8 @@ define([
   var ApplicationRouter = bb.Router.extend({
     routes: {
       'admin' : 'showAdminScreen',
+      'party/latest' : 'showPublicWithLatest',
       'party/:id' : 'showPublicScreen',
-      'party/id/:id' : 'showPublicScreenById',
       'sign_up' : 'showSignUpScreen',
       'forgot_password' : 'showForgotDialog',
       'edit-own-details' : 'showOwnDetailsEditor',
@@ -38,7 +38,7 @@ define([
       if(hash) {
 	this.navigate(hash, {trigger: true});
       } else {
-	this.navigate('party/id/0', {trigger: true});
+	this.navigate('party/latest', {trigger: true});
       }
     },
 
@@ -73,19 +73,14 @@ define([
       editDetails.initialize({el:contentEl, currentUser: authentication.currentUser});
     },
 
-    _showPublicScreen: function(party) {
+    showPublicScreen: function(title) {
+      var party = new models.PartyFinder({title: title});
       admin.detach();
       pub.initialize({el:contentEl, party: party, currentUser: authentication.currentUser});
     },
 
-    showPublicScreen: function(title) {
-      var party = new models.PartyFinder({title:title});
-      this._showPublicScreen(party);
-    },
-
-    showPublicScreenById: function(id) {
-      var party = new models.PartyFinder({id:id});
-      this._showPublicScreen(party);
+    showPublicWithLatest: function() {
+      this.showPublicScreen();
     }
   });
 

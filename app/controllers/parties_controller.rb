@@ -44,12 +44,10 @@ class PartiesController < ApplicationController
 
   def show
     party = nil;
-    if (params[:by_title])
-      party = Party.where(:title => params[:id]).first
-    elsif (params[:id].to_i == 0) #TODO remove and resolve in frontend.
+    if (params[:latest])
       party = Party.order("date ASC").select { |p| is_party_active(p) }.first
     else
-      party = Party.find(params[:id])
+      party = Party.where(:title => params[:id]).first
     end
 
     if party && (is_party_active(party) || current_user.role == "admin")

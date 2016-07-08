@@ -131,14 +131,9 @@ define([
 
 	urlRoot: '/parties/',
 	
-	url: function() {
-	    var partyFindUrl;
-	    if (this.id || this.id == 0) {
-		partyFindUrl = this.id;
-	    } else if (this.get('title')) {
-		partyFindUrl = this.get('title') + '?by_title=true';
-	    }
-	    return this.urlRoot + partyFindUrl;
+        url: function() {
+	  var id = this.get('title') || "-1?latest=true";
+	  return this.urlRoot + id;
 	}
     });
 
