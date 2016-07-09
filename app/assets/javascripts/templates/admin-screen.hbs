@@ -6,15 +6,27 @@
 
       <article id="admin" class="span10">
 	<heading> <!-- FIXME restyle -->
-	  <h1>Nakkikone Administration</h1>
+	  <h1 style="text-align: center;margin-bottom: 50px;">Nakkikone Administration</h1>
 	</heading>
 
-	<hr class="noprint"/>
 	
-	<section class="span6 noprint">
+	<section id="admin-nakki-info-details" class="accordion span12 noprint">
+	  <div class="accordion-group">
+	    <heading class="accordion-heading noprint">
+	      <a class="accordion-toggle" data-toggle="collapse" data-parent="admin-nakki-info-details" href="#nakki-info-details"><h2>Nakki types and descriptions</h2></a>
+	      <p class="descr"><i class="icon-edit"></i> Here you can edit and create new nakki types that can be selected into any party timetable.</p>
+	    </heading>
+	    <div id="nakki-info-details" class="accordion-body collapse">
+	      <div class="accordion-inner">
+		<div id="nakki-infos" class="noprint"></div>
+	      </div>
+	    </div>
+	  </div>
+	</section>
+
+	<section class="span6 noprint" style="padding:0 15px;">
 	  <heading>
-	    <h2>Select Party</h2>
-	    <p><small>Here you can select party which information you're interested in.</small></p>
+	    <h2>Create or select a Party</h2>
 	  </heading>
 	  <div id="party-selector"></div>
 	</section>
@@ -38,19 +50,6 @@
 	  </div>
 	</section>
 
-	<section id="admin-nakki-info-details" class="accordion span12">
-	  <div class="accordion-group">
-	    <heading class="accordion-heading noprint">
-	      <a class="accordion-toggle" data-toggle="collapse" data-parent="admin-nakki-info-details" href="#nakki-info-details"><h2>Nakki and its Details</h2></a>
-	      <p class="descr"><i class="icon-edit"></i> Here you can edit and create new nakki types that can be selected into Nakki timetable.</p>
-	    </heading>
-	    <div id="nakki-info-details" class="accordion-body collapse">
-	      <div class="accordion-inner">
-		<div id="nakki-infos" class="noprint"></div>
-	      </div>
-	    </div>
-	  </div>
-	</section>
 	
 	<section id="admin-nakki-timetable" class="accordion span12">
 	  <div class="accordion-group">
