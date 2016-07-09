@@ -128,7 +128,7 @@ define([
     }
 
     function toggleSectionsOpen() {
-	var accordionsToOpen = $('#party-details, #nakki-timetable, #participants-details');
+	var accordionsToOpen = $('#party-details');
 	var sectionsToEnable = $('#admin-party-details, #admin-nakki-timetable, #admin-participants');
 	sectionsToEnable.toggleClass('disabled', false);
 	accordionsToOpen.filter(isClosed).collapse('show');
