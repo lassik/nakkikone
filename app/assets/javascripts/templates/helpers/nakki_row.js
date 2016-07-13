@@ -38,6 +38,6 @@ define('templates/helpers/nakki_row', [
     }
 
     function freeSlot(id) {
-	return '<input type="checkbox" name="selection" value="' + id + '"/><span class="take">Take</span>';
+	return '<span class="take"><input type="checkbox" name="selection" value="' + id + '"/> Take</span>';
     }
 });
