@@ -85,7 +85,9 @@ footer {
 }
 #auxJob-constructors .list-of-nicks {display:none;}
 #auxJob-cleaners .list-of-nicks {display:none;}
-
+.table-responsive {
+	overflow-x: auto;
+}
 .disabled {
     opacity: 0.2;
     pointer-events: none;
