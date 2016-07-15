@@ -30,12 +30,6 @@ define([
 	appendAlert: function(message) {
 	    if (message.type == 'success') {
 	        this.$el.append(alertTmpl({message: message}));
-		if (this.$el.children().length > 0){
-		    var self = this;
-		    setTimeout(function() {
-			  self.$el.find(":first-child").remove();
-		    }, 15000);
-		}
 	     }
 	     else if (message.type == 'error'){
 		 this.$el.prepend(alertTmpl({message: message}));

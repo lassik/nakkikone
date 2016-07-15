@@ -11,16 +11,14 @@
     <button id="creator" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Create party</button>
   </div>
 </div>
-  <button class="btn btn-success" href="#party-creation-dialog" role="button" class="btn" data-toggle="modal">New Party</button>
-</span>
-<hr>
-<form method="post">
-  <div class="controls controls-row">
-    <select name="parties" class="selector" style="margin-bottom: 0px;">
-      <option value="">select one to edit</option>
-      {{#each parties}}
-      <option value="{{ this.cid }}">{{ this.title }}</option>
-      {{/each}}
-    </select>
-</form>
-  <button class="deletor btn btn-danger">Delete selected</button>
+  <button class="btn btn-success pull-left span2" href="#party-creation-dialog" role="button" data-toggle="modal">New Party</button>
+	<form method="post" class="span8">
+	  <div class="controls controls-row">
+	    <select name="parties" class="selector" style="margin-bottom: 0px;">
+	      <option value="">select one to edit</option>
+	      {{#each parties}}
+	      <option value="{{ this.cid }}">{{ this.title }}</option>
+	      {{/each}}
+	    </select>
+	</form>
+  <button class="deletor btn btn-danger pull-right">Delete selected</button>

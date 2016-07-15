@@ -88,6 +88,7 @@ footer {
 #auxJob-cleaners .list-of-nicks {display:none;}
 .table-responsive {
 	overflow-x: auto;
+	box-shadow: inset -17px -12px 70px -36px #aaa;
 }
 .disabled {
     opacity: 0.2;
