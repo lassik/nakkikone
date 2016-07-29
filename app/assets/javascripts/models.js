@@ -132,7 +132,7 @@ define([
 	urlRoot: '/parties/',
 	
         url: function() {
-	  var id = this.get('title') || "-1?latest=true";
+	  var id = this.get('title');
 	  return this.urlRoot + id;
 	}
     });

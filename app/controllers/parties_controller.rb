@@ -43,13 +43,8 @@ class PartiesController < ApplicationController
   end
 
   def show
-    party = nil;
-    if (params[:latest])
-      party = Party.order("date ASC").select { |p| is_party_active(p) }.first
-    else
-      party = Party.where(:title => params[:id]).first
-    end
-
+    party = Party.where(:title => params[:id]).first
+    
     if party && (is_party_active(party) || current_user.role == "admin")
       render :json => party
     else
