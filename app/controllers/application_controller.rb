@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   
   def bootstrap
     # here we bootstrap the application so that we render static html page where the javacscript injection is present
+    @version = '2.8.2'
   end
 
   private
