@@ -18,7 +18,6 @@ define([
   var ApplicationRouter = bb.Router.extend({
     routes: {
       'admin' : 'showAdminScreen',
-      'party/latest' : 'showPublicWithLatest',
       'party/:id' : 'showPublicScreen',
       'sign_up' : 'showSignUpScreen',
       'forgot_password' : 'showForgotDialog',
@@ -29,21 +28,18 @@ define([
     initialize: function() {
       _.bindAll(this);
       this.listenTo(vent.itself(), 'user-created', this.startingPage);
-      this.listenTo(vent.itself(), 'logged-in', this.loggedIn);
+      this.listenTo(vent.itself(), 'successful-login', this.afterSuccessfulLogin);
     },
 
-    loggedIn: function() {
+    afterSuccessfulLogin: function() {
       this.createNavigation();
       var hash = authentication.getFollowUp();
-      if(hash) {
-	this.navigate(hash, {trigger: true});
-      } else {
-	this.navigate('party/latest', {trigger: true});
-      }
+      this.navigate(hash, {trigger: true});
     },
 
     createNavigation: function() {
       navigation.createNavigation();
+      contentEl.html("<h3>Select interested event from the upper right corner navigation.</h3>");
     },
 
     startingPage: function() {
@@ -77,10 +73,6 @@ define([
       var party = new models.PartyFinder({title: title});
       admin.detach();
       pub.initialize({el:contentEl, party: party, currentUser: authentication.currentUser});
-    },
-
-    showPublicWithLatest: function() {
-      this.showPublicScreen();
     }
   });
 
@@ -101,15 +93,17 @@ define([
   };
 
   var afterAuth = function() {
+    var router = new ApplicationRouter();
     if (!authentication.currentUser()) {
       initLogin();
+    } else {
+      router.createNavigation();
     }
+    bb.history.start();
   };
 
   var initialize = function(options) {
     contentEl = options.el;
-    new ApplicationRouter();
-    bb.history.start();
     authentication.initialize(afterAuth);
   };
 
