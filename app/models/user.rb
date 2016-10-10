@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation, :name, :number, :role, :nick
+#  attr_accessible :email, :password, :password_confirmation, :name, :number, :role, :nick
   
   attr_accessor :password
   before_save :encrypt_password
@@ -7,18 +7,18 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
   
-  validates :email, 
-  :presence => true, 
-  :uniqueness => { :case_sensitive => false }, 
-  :format => { 
-    :with => /^.+@.+$/, #TODO replace with better one
-    :message => "%{value} is not valid email (our opinion, you might disagree)"
-  }
+  # validates :email, 
+  # :presence => true, 
+  # :uniqueness => { :case_sensitive => false }, 
+  # :format => { 
+  #   :with => /^.+@.+$/, #TODO replace with better one
+  #   :message => "%{value} is not valid email (our opinion, you might disagree)"
+  # }
 
-  validates :role, :inclusion => { 
-    :in => %w(admin user), 
-    :message => "%{value} is not valid role"
-  }
+  # validates :role, :inclusion => { 
+  #   :in => %w(admin user), 
+  #   :message => "%{value} is not valid role"
+  # }
 
   validates_presence_of :name, :nick
   

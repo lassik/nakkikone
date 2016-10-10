@@ -4,22 +4,22 @@ gem 'capistrano'
 gem 'rvm-capistrano', :require => false
 gem 'rake'
 
-gem 'rails', '3.2.6'
+gem 'rails', '4.2.7.1'
 gem 'json'
-gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'bcrypt'
 gem 'mysql2'
-gem 'active_model_serializers', :github => 'rails-api/active_model_serializers'
-gem 'requirejs-rails', '= 0.9.5'
-gem 'jquery-rails', '>= 1.0.17'
+gem 'active_model_serializers'
+gem 'requirejs-rails'
+gem 'jquery-rails'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'uglifier',     '>= 1.0.3'
+  gem 'sass-rails'
+  gem 'uglifier'
   gem 'therubyracer'
 end
 
 group :test, :development do
-  gem 'minitest-rails', :git => 'https://github.com/blowmage/minitest-rails.git'
+  gem 'minitest-rails'
   gem 'mocha'
   gem 'factory_girl_rails'
   gem 'pry-rails'
