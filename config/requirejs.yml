@@ -1,3 +1,4 @@
+#these paths does not work with 4.x rails currently, thus we need to flat those libraries into vendor folder
 paths:
   underscore: "underscore/underscore"
   backbone: "backbone/backbone"
@@ -38,3 +39,7 @@ shim:
   bootstrapWysivyg:
     deps: ['wysihtml5']
     exports: 'bootstrapWysivyg'
+
+  hbs:
+    deps: ['hbs/handlebars','hbs/json2','hbs/underscore']
+    exports: 'hbs'
