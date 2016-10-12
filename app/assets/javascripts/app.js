@@ -27,7 +27,6 @@ define([
 
     initialize: function() {
       _.bindAll(this);
-      this.listenTo(vent.itself(), 'user-created', this.startingPage);
       this.listenTo(vent.itself(), 'successful-login', this.afterSuccessfulLogin);
     },
 

@@ -10,7 +10,7 @@ define([
 ], function(Backbone, _, $, models, vent, authentication, loginForm) {
 
   var Login_View = Backbone.View.extend({
-    events: {'submit': 'login'},
+    events: {'click .laheta': 'login'},
 
     initialize: function() {
       _.bindAll(this);

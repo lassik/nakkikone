@@ -47,7 +47,7 @@ define([
     };
 
     var SignUp_Form = bb.View.extend({
-	events: {'submit': 'save'},
+	events: {'click .laheta': 'save'},
 
 	initialize: function() {
 	    _.bindAll(this);
@@ -77,8 +77,11 @@ define([
 	    this.model.save(data, {
 		wait:true, 
 		success: function() {
-		    $('#user-created-continue').click(function() {
-			self.vent.trigger('user-created');
+		    $('#user-created-continue').click(function(e) {
+		      window.location.hash = 'login';
+		      //to fix odd behaviour binding to event propagataion with bootstrap model
+		      $('.modal-backdrop').toggleClass('in', false);
+		      return false;
 		    });
 		    $('#user-action-dialog').modal({
 			backdrop: "static"
