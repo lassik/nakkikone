@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :require_login
   rescue_from ActiveRecord::RecordNotFound, User::Unauthorized, User::Unauthenticated, :with => :mapped_exceptions
   skip_before_filter :require_login, :only => [:bootstrap]
-  
+
   def bootstrap
     # here we bootstrap the application so that we render static html page where the javacscript injection is present
     @version = '2.8.2'
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   def require_login
     raise User::Unauthenticated unless logged_in?
   end
-  
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
