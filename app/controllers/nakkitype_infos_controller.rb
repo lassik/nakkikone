@@ -15,9 +15,7 @@ class NakkitypeInfosController < ApplicationController
   end
 
   def create
-    title = if params[:title].eql? "_generate_" then generate_name_from_seq else params[:title] end
-    info = NakkitypeInfo.new( :title => title,
-                              :description => params[:description])
+    info = NakkitypeInfo.new(info_params)
     if info.save
       render :json => info
     else
@@ -28,8 +26,7 @@ class NakkitypeInfosController < ApplicationController
   def update
     info = NakkitypeInfo.find params[:id]
 
-    if info.update_attributes( :title => params[:title],
-                               :description => params[:description])
+    if info.update_attributes(info_params)
       render :json => info
     else
       render :status => 400, :json => info.errors
@@ -39,5 +36,13 @@ class NakkitypeInfosController < ApplicationController
   def destroy
     NakkitypeInfo.destroy(params[:id])
     render :json => {}
+  end
+
+  private
+
+  def info_params
+    tmp = params.require(:nakkitype_info).permit(:id, :title, :description)
+    tmp.title = if tmp[:title].eql? "_generate_" then generate_name_from_seq else tmp[:title] end
+    return tmp
   end
 end

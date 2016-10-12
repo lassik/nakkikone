@@ -1,6 +1,4 @@
 class NakkitypeInfo < ActiveRecord::Base
-  #attr_accessible :description, :id, :title
-
   validates :title, :presence => true, :length => {
               :minimum => 2,
               :maximum => 50,
