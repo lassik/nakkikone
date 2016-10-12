@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(params[:user])
+    user = User.new(user_params)
     user.role = "user";
     if user.save
       render :json => user
@@ -16,9 +16,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_role = current_user.role
-    current_user.update_attributes(params[:user])
-    current_user.update_attributes({:role => current_role})
+    current_user.update_attributes(user_params)
     if current_user.save
       render :json => current_user
     else
@@ -29,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def reset_password
-    user = User.where(:email => params[:email]).first
+    user = User.where(:email => user_params.email).first
     if user
       new_password = User.generate_random_password(8)
       user.password = new_password
@@ -40,8 +38,17 @@ class UsersController < ApplicationController
       else
         return render :status => 400, :json => errors
       end
-    else 
+    else
       return render :status => 200, :text => "done"
     end
+  end
+
+  private
+
+  def user_params
+    tmp = params.require(:user).permit(:name, :nick, :email, :number, :password, :password_confirmation)
+    tmp[:password] = params[:password]
+    tmp[:password_confirmation] = params[:password_confirmation]
+    return tmp
   end
 end
