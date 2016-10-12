@@ -1,16 +1,13 @@
 class NakitController < ApplicationController
 
   def index
-    current_party = get_current_party
-    nakkilist = []
-    current_party.nakkitypes.each{ |t| nakkilist += t.nakkis }
-
+    nakkilist = get_current_party.nakkitypes.flat_map{ |t| t.nakkis }
     render :json => nakkilist, :root => false
   end
 
   def update
     nakki = Nakki.find(params[:id])
-    if nakki.user.nil? || current_user.role == "admin"
+    if nakki.user.nil? || current_user.is_admin
        nakki.user = current_user
     else
       render :status => 409, :text => "nakki has allready been reserved"
