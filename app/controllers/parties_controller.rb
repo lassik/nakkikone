@@ -5,8 +5,8 @@ class PartiesController < ApplicationController
   def index
     all_parties = Party.all
 
-    if current_user.role != "admin"
-      all_parties = all_parties.select { |p| is_party_active(p) }
+    if !current_user.is_admin
+      all_parties = all_parties.select { |p| p.is_active }
     end
 
     render :json => all_parties, :root => false
@@ -14,11 +14,7 @@ class PartiesController < ApplicationController
 
   def update
     party = Party.find params[:id]
-    if party.update_attributes( :title => params[:title],
-                                :description => params[:description],
-                                :aux_jobs_enabled => params[:auxJobsEnabled],
-                                :date => params[:date],
-                                :info_date => params[:infoDate])
+    if party.update_attributes(party_params)
       render :json => party
     else
       render :status => 400, :json => party.errors
@@ -26,11 +22,7 @@ class PartiesController < ApplicationController
   end
 
   def new
-    party = Party.new( :title => params[:title],
-                       :description => params[:description],
-                       :aux_jobs_enabled => params[:auxJobsEnabled],
-                       :date => params[:date],
-                       :info_date => params[:infoDate])
+    party = Party.new(party_params)
     if party.save
       render :json => party
     else
@@ -44,8 +36,7 @@ class PartiesController < ApplicationController
 
   def show
     party = Party.where(:title => params[:id]).first
-    
-    if party && (is_party_active(party) || current_user.role == "admin")
+    if party && (party.is_active || current_user.is_admin)
       render :json => party
     else
       render :status => 404, :text => "not found"
@@ -58,7 +49,8 @@ class PartiesController < ApplicationController
   end
 
   private
-  def is_party_active(party)
-    3.days.ago < party.date && party.date < 4.weeks.from_now
+
+  def party_params
+    params.require(:party).permit(:title, :description, :date, :info_date, :aux_jobs_enabled)
   end
 end
