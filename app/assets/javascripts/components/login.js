@@ -31,8 +31,9 @@ define([
       $.ajax({
 	type: "POST",
 	url: '/login',
+	contentType: 'application/json',
 	dataType: 'json',
-	data: data,
+	data: JSON.stringify(data),
 	success: function(data) {
 	  authentication.setLoggedUser(new models.Person(data));
 	  vent.trigger('successful-login');
