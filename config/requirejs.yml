@@ -39,7 +39,3 @@ shim:
   bootstrapWysivyg:
     deps: ['wysihtml5']
     exports: 'bootstrapWysivyg'
-
-  # hbs:
-  #   deps: ['hbs/handlebars','hbs/json2','hbs/underscore']
-  #   exports: 'hbs'

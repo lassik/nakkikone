@@ -10,7 +10,7 @@ gem 'json'
 gem 'bcrypt'
 gem 'mysql2'
 gem 'active_model_serializers'
-gem 'requirejs-rails'
+gem 'requirejs-rails', '0.9.5'
 gem 'jquery-rails'
 
 group :assets do
