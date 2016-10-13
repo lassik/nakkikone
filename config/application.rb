@@ -50,14 +50,14 @@ module RailStrap
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '2.3'
- 
+
     # Enable the asset pipeline (enabled by default)
     config.assets.enabled = true
 
     # todo should this be in asset precompilation environment such as production...
     # config.requirejs.logical_asset_filter += [/\.hbs$/]
     # config.assets.precompile += %w( _bootstrap.min.css bootstrap-responsive.min.css datepicker.css bootstrap-wysihtml5.css bootstrap-timepicker.css print.css style.css )
-  
+
     config.generators do |g|
       g.test_framework :mini_test, :spec => true, :fixture => false
       g.assets false

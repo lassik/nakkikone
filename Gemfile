@@ -5,6 +5,7 @@ gem 'rvm-capistrano', :require => false
 gem 'rake'
 
 gem 'rails', '4.2.7.1'
+gem 'sprockets', '2.12.4'
 gem 'json'
 gem 'bcrypt'
 gem 'mysql2'

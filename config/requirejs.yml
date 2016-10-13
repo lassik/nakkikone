@@ -1,18 +1,18 @@
-#these paths does not work with 4.x rails currently, thus we need to flat those libraries into vendor folder
-paths:
-  underscore: "underscore/underscore"
-  backbone: "backbone/backbone"
-  moment: "moment/min/moment.min"
-  languages: "moment/min/langs"
-  handlebars: "require-handlebars-plugin/hbs"
-  hbs: "require-handlebars-plugin/hbs"
-  i18nprecompile: "require-handlebars-plugin/hbs/i18nprecompile"
-  json2: "require-handlebars-plugin/hbs/json2"
-  bootstrapDatepicker: "bootstrap-datepicker/js/bootstrap-datepicker"
-  bootstrapTimepicker: "bootstrap-timepicker/js/bootstrap-timepicker"
-  bs: "libs/bootstrap.min"
-  bootstrapWysivyg: "bootstrap-wysihtml5/dist/bootstrap-wysihtml5-0.0.2"
-  wysihtml5: "wysihtml5/dist/wysihtml5-0.3.0"
+# paths are not working properly with requirejs-plugin and rails4
+# paths:
+#   underscore: "underscore/underscore"
+#   backbone: "backbone/backbone"
+#   moment: "moment/min/moment.min"
+#   languages: "moment/min/langs"
+#   handlebars: "require-handlebars-plugin/hbs"
+#   hbs: "require-handlebars-plugin/hbs"
+#   i18nprecompile: "require-handlebars-plugin/hbs/i18nprecompile"
+#   json2: "require-handlebars-plugin/hbs/json2"
+#   bootstrapDatepicker: "bootstrap-datepicker/js/bootstrap-datepicker"
+#   bootstrapTimepicker: "bootstrap-timepicker/js/bootstrap-timepicker"
+#   bs: "libs/bootstrap.min"
+#   bootstrapWysivyg: "bootstrap-wysihtml5/dist/bootstrap-wysihtml5-0.0.2"
+#   wysihtml5: "wysihtml5/dist/wysihtml5-0.3.0"
 
 shim:
   underscore:
@@ -40,6 +40,6 @@ shim:
     deps: ['wysihtml5']
     exports: 'bootstrapWysivyg'
 
-  hbs:
-    deps: ['hbs/handlebars','hbs/json2','hbs/underscore']
-    exports: 'hbs'
+  # hbs:
+  #   deps: ['hbs/handlebars','hbs/json2','hbs/underscore']
+  #   exports: 'hbs'
