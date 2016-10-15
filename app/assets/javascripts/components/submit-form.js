@@ -79,9 +79,6 @@ define([
 		success: function() {
 		    $('#user-created-continue').click(function(e) {
 		      window.location.hash = 'login';
-		      //to fix odd behaviour binding to event propagataion with bootstrap model
-		      $('.modal-backdrop').toggleClass('in', false);
-		      return false;
 		    });
 		    $('#user-action-dialog').modal({
 			backdrop: "static"
