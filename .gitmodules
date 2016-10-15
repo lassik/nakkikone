@@ -18,7 +18,7 @@
 	url = https://github.com/timrwood/moment.git
 [submodule "vendor/assets/javascripts/wysihtml5"]
 	path = vendor/assets/javascripts/wysihtml5
-	url = https://github.com:xing/wysihtml5.git
+	url = https://github.com/xing/wysihtml5.git
 [submodule "vendor/assets/javascripts/bootstrap-wysihtml5"]
 	path = vendor/assets/javascripts/bootstrap-wysihtml5
-	url = https://github.com:jhollingworth/bootstrap-wysihtml5.git
+	url = https://github.com/jhollingworth/bootstrap-wysihtml5.git
