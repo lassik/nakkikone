@@ -42,7 +42,7 @@ class NakkitypeInfosController < ApplicationController
 
   def info_params
     tmp = params.require(:nakkitype_info).permit(:id, :title, :description)
-    tmp.title = if tmp[:title].eql? "_generate_" then generate_name_from_seq else tmp[:title] end
+    tmp[:title] = if tmp[:title].eql? "_generate_" then generate_name_from_seq else tmp[:title] end ##TODO should this be handled by model?
     return tmp
   end
 end

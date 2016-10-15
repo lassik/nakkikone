@@ -79,5 +79,10 @@ describe NakkitypeInfosController do
     NakkitypeInfo.count.must_equal 2
     json_response.keys.must_include "title"
   end
+
+  after do
+    NakkitypeInfo.delete_all
+  end
+  
 end
 
