@@ -4,5 +4,5 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-RailStrap::Application.config.secret_token = 'a86d5dbc14757bb62fa16c390fb4bae8b75382f0848b7862835c1549511fdee61959a5b431f54d3aa7d575f9b87f605f16029aeb33ec3584a30e2876dbbba895'
-RailStrap::Application.config.secret_key_base = 'asduifa86d5dbc14757bb62fa16c390fb4bae8b75382f0848b7862835c1549511fdee61959a5b431f54d3aa7d575f9b87f605f16029aeb33ec3584a30e2876dbbba895'
+RailStrap::Application.config.secret_token = ENV['APP_SECRET_TOKEN']
+RailStrap::Application.config.secret_key_base = ENV['APP_SECRET_KEY_BASE']

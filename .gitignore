@@ -18,3 +18,5 @@
 /config/email.yml
 /public/assets/
 /vendor/bundle/
+/.env
+/db/data/

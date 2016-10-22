@@ -1,0 +1,24 @@
+version: '2'
+services:
+  db:
+   image: mysql:5.7
+   volumes:
+     - /var/lib/mysql
+   restart: always
+   environment:
+     MYSQL_ROOT_PASSWORD: ${APP_DB_ROOTPASSWORD}
+     MYSQL_DATABASE: ${APP_DB_DATABASE}
+     MYSQL_USER: ${APP_DB_USERNAME}
+     MYSQL_PASSWORD: ${APP_DB_PASSWORD}
+  nakkikone:
+    image: 'nakkikone:${VERSION}'
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    depends_on:
+      - db
+    volumes:
+      - /srv/rails/nakkikone
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env
