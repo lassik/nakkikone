@@ -42,7 +42,7 @@ Masterin travis build löytyy täältä: https://travis-ci.org/EntropyRy/nakkiko
 
 ## Deployaaminen
 
-Nakkikone deployataan docker containerina. Bootsrappaukseen taulut voidaan luoda seuraavasti:
+Nakkikone deployataan docker containerina. Bootsrappaukseen taulut ja initial datan voidaan luoda seuraavasti:
 
 ```sh
 sudo docker-compose run --rm nakkikone rake db:setup
