@@ -3,7 +3,7 @@ services:
   db:
    image: mysql:5.7
    volumes:
-     - /var/lib/mysql
+     - nakkikone_data:/var/lib/mysql
    restart: always
    environment:
      MYSQL_ROOT_PASSWORD: ${APP_DB_ROOTPASSWORD}
@@ -22,3 +22,6 @@ services:
       - '3000:3000'
     env_file:
       - .env
+volumes:
+  nakkikone_data:
+    driver: local
