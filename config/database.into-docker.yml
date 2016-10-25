@@ -1,0 +1,20 @@
+default: &default
+  adapter: mysql2
+  host: db
+  username: nakki
+  password: nakki
+  pool: 5
+
+development:
+  <<: *default
+  database: nakkikone_development
+
+test:
+  <<: *default
+  database: nakkikone_test
+
+production:
+  <<: *default
+  database: <%= ENV['APP_DB_DATABASE'] %>
+  username: <%= ENV['APP_DB_USERNAME'] %>
+  password: <%= ENV['APP_DB_PASSWORD'] %>

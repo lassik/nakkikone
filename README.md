@@ -42,10 +42,32 @@ Masterin travis build löytyy täältä: https://travis-ci.org/EntropyRy/nakkiko
 
 ## Deployaaminen
 
-Nakkikone deployataan docker containerina. Bootsrappaukseen taulut ja initial datan voidaan luoda seuraavasti:
+Nakkikone deployataan docker containerina. Luo lokaalit filut seuraavist konfigurointi filuista
+
+```
+cp .env.sample .env
+cp config/database.yml.sample.docker config/database.yml
+cp config/email.yml.sample.docker config/email.yml
+cp config/secrets.yml.sample.docker config/secrets.yml
+```
+
+ja muokkaa niista salaisuudet omiksesi.
+
+Pystyta applikaatio docker-composella,
+
+```
+sudo docker-compose up --build
+```
+
+Kaynnistyksen jalkeen bootsrappaukseen taulut ja initial datan voidaan luoda seuraavasti:
 
 ```sh
 sudo docker-compose run --rm nakkikone rake db:setup
 ```
 
-Muista alustaa ajo config/configurations.env:lla, joka sisaltaa applikaation salaisuudet. Katso tarkemmat tiedot docker-compose.yml.
+Tai upgradettaessa vanhasta, konffaa composen mysql volume joka sisaltaa dumpattavan sisallon.
+
+```
+volumes:
+    - ./docker/data:/docker-entrypoint-initdb.d
+```

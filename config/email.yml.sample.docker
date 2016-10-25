@@ -1,0 +1,12 @@
+development:
+  :address: localhost
+  :port: 25
+  :authentication: plain
+  :enable_starttls_auto: true
+  :openssl_verify_mode: 'none'
+production:
+  :address: localhost
+  :port: 25
+  :authentication: plain
+  :enable_starttls_auto: true
+  :openssl_verify_mode: 'none'
