@@ -5,6 +5,6 @@ class PasswordResetMailer < ActionMailer::Base
     @user = user
     @new_password = new_password
     @url = "http://nakkikone.entropy.fi"
-    mail(to: user.email, subject: "Helper for Neurodegeneration problems (Nakkikone)")
+    mail(to: user.email, subject: "[Nakkikone] Password reset")
   end
 end

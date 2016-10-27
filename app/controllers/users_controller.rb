@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def reset_password
-    user = User.where(:email => user_params.email).first
+    user = User.where(:email => user_params[:email]).first
     if user
       new_password = User.generate_random_password(8)
       user.password = new_password

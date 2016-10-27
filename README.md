@@ -56,7 +56,7 @@ ja muokkaa niista salaisuudet omiksesi.
 Pystyta applikaatio docker-composella,
 
 ```
-. .env && sudo docker-compose up --build
+sudo docker-compose up --build
 ```
 
 Kaynnistyksen jalkeen bootsrappaukseen taulut ja initial datan voidaan luoda seuraavasti:
