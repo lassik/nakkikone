@@ -2,10 +2,10 @@ RailStrap::Application.routes.draw do
 
   root :to => "application#bootstrap"
 
-  get "sign_up" => "users#new", :as => "sign_up"
+  post "sign_up" => "users#new", :as => "sign_up"
   put "yourself" => "users#update"
 
-  get "reset_password" => "users#reset_password"
+  put "reset_password" => "users#reset_password"
 
   get "login" => "sessions#new"
   post "login" => "sessions#create"
