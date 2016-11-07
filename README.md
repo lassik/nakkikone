@@ -16,15 +16,17 @@ Ilman dokkeria:
 4. Asenna MySQL
 5. Kopioi malliasetukset tietokantayhteyttä varten ```cp config/database.yml.sample config/database.yml``` ja muokkaa tarvittaessa. Kopio `.env.sample` `.env`:ksi ja muokkaa filua pitamaan salaisuudet piilossa, tama pitaa sourcettaa ajoymparistoon aina.
 6. Asenna projektin käyttämät kirjastot ```bundle install```
-7. Käynnistä kehityspalvelin ```rails s``` ja avaa selaimella osoite ``localhost:3000```
+7. Lataa submoduulit ```git submodule init && git submodule update```
+8. Käynnistä kehityspalvelin ```rails s``` ja avaa selaimella osoite ``localhost:3000```
 
 Dokkerin kanssa:
 
 1. Asenna docker tyokalut (docker-compose >~ 1.6)
 2. Kopio `.env.sample -> .env` ja lisaa omat salaisuudet
 3. Kopio `config/database.yml.sample -> config/database.yml` ja muokkaa halutessassi
-3. aja ```sudo docker-compose up --build```
-4. tietokannan puutostilaan aja ```sudo docker-compose run --rm nakkikone rake db:setup```
+3. Lataa submoduulit ```git submodule init && git submodule update```
+4. aja ```sudo docker-compose up --build```
+5. tietokannan puutostilaan aja ```sudo docker-compose run --rm nakkikone rake db:setup```
 
 Nyt tuotannon kaltainen kehitysympäristö tulisi olla pystyssä.
 
