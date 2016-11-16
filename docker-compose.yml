@@ -4,7 +4,7 @@ services:
   db:
     image: mysql:5.7
     volumes:
-      - ./nakkikone-volumes/db:/var/lib/mysql
+      - ./docker-volumes/db:/var/lib/mysql
       - ./tmp/migration_data:/docker-entrypoint-initdb.d
     restart: always
     environment:
