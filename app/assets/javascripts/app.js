@@ -28,6 +28,7 @@ define([
     initialize: function() {
       _.bindAll(this);
       this.listenTo(vent.itself(), 'successful-login', this.afterSuccessfulLogin);
+      this.listenTo(vent.itself(), 'no-available-parties', this.showNoParties);
     },
 
     afterSuccessfulLogin: function() {
@@ -39,6 +40,10 @@ define([
     createNavigation: function() {
       navigation.createNavigation();
       contentEl.html("<h3>Select interested event from the upper right corner navigation.</h3>");
+    },
+
+    showNoParties: function() {
+      contentEl.html("<h2>Keep Calm and carry on.</h2>");
     },
 
     startingPage: function() {
