@@ -4,7 +4,7 @@ services:
   db:
     image: mysql:5.7
     volumes:
-      - ./docker-volumes/db:/var/lib/mysql
+      - nakkikone_db_data:/var/lib/mysql
       - ./tmp/migration_data:/docker-entrypoint-initdb.d
     restart: always
     environment:
@@ -27,5 +27,5 @@ services:
       - db
 
 volumes:
-  nakkikone_data:
+  nakkikone_db_data:
     driver: local
