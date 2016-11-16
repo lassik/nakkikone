@@ -99,7 +99,7 @@ define([
 	    title: "Party Title",
 	    description: "Osallistumalla nakkiin pääset maksutta bileisiin.",
 	    date: moment().add('days', 14).hours(22).minutes(0).toDate(),
-	    infoDate: moment().add('days', 14).hours(21).minutes(0).toDate()
+	    info_date: moment().add('days', 14).hours(21).minutes(0).toDate()
 	},
 
 	//TODO remove after UI refactoring
@@ -111,7 +111,7 @@ define([
 
 	parse: function(response, options) {
 	    response.date = new Date(response.date);
-	    response.infoDate = new Date(response.infoDate);
+	    response.info_date = new Date(response.infoDate);
 	    return response;
 	},
 
@@ -119,7 +119,7 @@ define([
 	    if (!attr['title']) {
 		return "party title is missing";
 	    };
-	    if (!attr['date'] || !attr['infoDate']) {
+	    if (!attr['date'] || !attr['info_date']) {
 		return "Important dates are missing";
 	    }
 	    return null;
