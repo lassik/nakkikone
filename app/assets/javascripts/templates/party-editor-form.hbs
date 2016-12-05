@@ -18,7 +18,7 @@
     <label class="control-label">Party Info Time:</label>
     <div class="controls">
       <div class="bootstrap-timepicker input-append">
-	<input type="text" name="infoTime" value="{{ prettyTime party.infoDate }}" class="input-mini timepicker" >
+	<input type="text" name="infoTime" value="{{ prettyTime party.info_date }}" class="input-mini timepicker" >
 	  <span class="add-on"><i class="icon-time"></i></span>
       </div>
     </div>
@@ -35,7 +35,7 @@
   <div class="control-group">
     <label class="control-label">Enable construction and building nakkis:</label>
     <div class="controls">
-      <input type="checkbox" name="auxJobsEnabled" value="enabled" {{#if party.auxJobsEnabled }}checked{{/if}}>
+      <input type="checkbox" name="aux_jobs_enabled" value="enabled" {{#if party.aux_jobs_enabled }}checked{{/if}}>
     </div>
   </div>
   <div class="control-group">

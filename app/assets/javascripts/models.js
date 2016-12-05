@@ -99,7 +99,8 @@ define([
       title: "Party Title",
       description: "Osallistumalla nakkiin pääset maksutta bileisiin.",
       date: moment().add('days', 14).hours(22).minutes(0).toDate(),
-      info_date: moment().add('days', 14).hours(21).minutes(0).toDate()
+      info_date: moment().add('days', 14).hours(21).minutes(0).toDate(),
+      aux_jobs_enabled: true
     },
 
     //TODO remove after UI refactoring
@@ -111,7 +112,7 @@ define([
 
     parse: function(response, options) {
       response.date = new Date(response.date);
-      response.info_date = new Date(response.infoDate);
+      response.info_date = new Date(response.info_date);
       return response;
     },
 

@@ -59,7 +59,7 @@ define([
 		nakkiTable.createComponent({el:$('#nakki-table',rootel), collection: nakit }, vent);
 		assignForm.createComponent({el:$('#assign',rootel), model: options.currentUser()}, vent, party);
 
-		if (party.get('auxJobsEnabled')) {
+		if (party.get('aux_jobs_enabled')) {
 		    auxJobs.createSelector({el: $('#auxJob-selector', rootel), model: party, collection: auxUsers, user: options.currentUser()}, vent);
 		    auxJobs.createCleanersList({el: $('#auxJob-cleaners', rootel), collection: auxUsers}, vent);
 		    auxJobs.createConstructorsList({el: $('#auxJob-constructors', rootel), collection: auxUsers}, vent);
