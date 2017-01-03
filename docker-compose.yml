@@ -17,6 +17,7 @@ services:
     image: 'nakkikone:${VERSION}'
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    restart: always
     volumes:
       - /srv/rails/nakkikone
     ports:
