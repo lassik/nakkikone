@@ -1,4 +1,4 @@
-FROM ruby:2.2.5
+FROM ruby:2.2.6
 
 MAINTAINER EntropyRy <webmaster@entropy.fi>
 
@@ -17,6 +17,6 @@ COPY Gemfile Gemfile
 
 RUN bundle install
 
-COPY . .
+ENTRYPOINT $INSTALL_PATH/start-nakkikone.sh
 
-RUN bundle exec rake assets:precompile
+

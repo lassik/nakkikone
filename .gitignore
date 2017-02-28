@@ -20,5 +20,6 @@
 /vendor/bundle/
 /.env
 
+/nakkikone_db_data
 /db/data/
 /docker-volumes/*
