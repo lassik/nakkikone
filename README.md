@@ -2,11 +2,22 @@
 
 # Nakkikone
 
-Työkalu masinoida tapahtumaan tarvittavat työvuorot. Tarkoitus olisi tehdä käyttäjä ystävällinen, jottei tarvitsi korkeakoulututkintoa tämän käyttämiseen.
+Työkalu masinoida tapahtumaan tarvittavat työvuorot. Koostuu käyttäjille näytettävästä varaus taulukosta ja admineille juhlien muokkaus ja hallinnointi työkalut.
 
 ## Kehitysympäristön asennus
 
-Ilman dokkeria:
+### Dokkerin kanssa
+
+1. Asenna docker tyokalut (docker-compose >~ 1.6 ja docker) sekä konfiguroi käyttöoikeudet kuntoon (lue Dockerin ohjeet)
+2. Aja kehitysympäristön alustus skripti ```./initialize-development-environment.sh```
+3. Buildaa ensimmainen nakkikone & db docker containers ```docker-compose up --build```
+4. Tietokannan puutostilaan aja ```docker-compose run --rm nakkikone rake db:setup```
+
+Nyt tuotannon kaltainen kehitysympäristö tulisi olla pystyssä. Jos näet että Nakkikone käynnistyy ennen tietokantaa, aja alas (ctrl-c) ja käynnistä uudelleen ```docker-compouse up``` (tiedetty ongelma).
+
+### Ilman dokkeria
+
+*DEPREKOITU TAPA, KÄYTÄ DOCKERIA.*
 
 1. Forkkaa ja kloonaa projekti itsellesi (lue Githubin ohjeet, jos et tiedä
    miten)
@@ -18,17 +29,6 @@ Ilman dokkeria:
 6. Asenna projektin käyttämät kirjastot ```bundle install```
 7. Lataa submoduulit ```git submodule init && git submodule update```
 8. Käynnistä kehityspalvelin ```rails s``` ja avaa selaimella osoite ``localhost:3000```
-
-Dokkerin kanssa:
-
-1. Asenna docker tyokalut (docker-compose >~ 1.6)
-2. Kopio `.env.sample -> .env` ja lisaa omat salaisuudet
-3. Kopio `config/database.yml.sample -> config/database.yml` ja muokkaa halutessassi
-3. Lataa submoduulit ```git submodule init && git submodule update```
-4. aja ```sudo docker-compose up --build```
-5. tietokannan puutostilaan aja ```sudo docker-compose run --rm nakkikone rake db:setup```
-
-Nyt tuotannon kaltainen kehitysympäristö tulisi olla pystyssä.
 
 ## Kontribuointi
 
@@ -44,16 +44,7 @@ Masterin travis build löytyy täältä: https://travis-ci.org/EntropyRy/nakkiko
 
 ## Deployaaminen
 
-Nakkikone deployataan docker containerina. Luo lokaalit filut seuraavist konfigurointi filuista
-
-```
-cp .env.sample .env
-cp config/database.yml.sample.docker config/database.yml
-cp config/email.yml.sample.docker config/email.yml
-cp config/secrets.yml.sample.docker config/secrets.yml
-```
-
-ja muokkaa niista salaisuudet omiksesi.
+Nakkikone deployataan docker containerina. Aja initialisointi ja muokkaa konfigurointi salaisuudet kuntoon.
 
 Pystyta applikaatio docker-composella,
 
