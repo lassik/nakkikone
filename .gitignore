@@ -11,15 +11,17 @@
 /db/*.sqlite3
 
 # Ignore all logfiles and tempfiles.
+*.swp
 /log/*.log
 /tmp
-*.swp
-/config/database.yml
-/config/email.yml
 /public/assets/
 /vendor/bundle/
+
+# Ignore all real configuration files
+/config/database.yml
+/config/email.yml
+/config/secrets.yml
 /.env
 
-/nakkikone_db_data
-/db/data/
+# ignore all related to docker containers and their persistence management 
 /docker-volumes/*
