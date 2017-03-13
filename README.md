@@ -6,14 +6,25 @@ Työkalu masinoida tapahtumaan tarvittavat työvuorot. Koostuu käyttäjille nä
 
 ## Kehitysympäristön asennus
 
+Kehitysympäristö ja tuotantoympäristö ovat kovin lähellä toisiaan dockerin ansiosta.
+
 ### Dokkerin kanssa
 
-1. Asenna docker tyokalut (docker-compose >~ 1.6 ja docker) sekä konfiguroi käyttöoikeudet kuntoon (lue Dockerin ohjeet)
+HUOM: tee nama ohjeet ajatuksen kanssa.
+
+0. Asenna docker tyokalut (docker-compose >~ 1.6 ja docker) sekä konfiguroi käyttöoikeudet kuntoon (lue Dockerin ohjeet)
+1. Varmista etta reposi on 'puhdas', dockerin 'hienouksia' on se etta voit halutessasi mountata tyohakemiston kontaineriin sisalle (kts [AUFS filesystem](https://docs.docker.com/engine/userguide/storagedriver/aufs-driver/)).
 2. Aja kehitysympäristön alustus skripti ```./initialize-development-environment.sh```
 3. Buildaa ensimmainen nakkikone & db docker containers ```docker-compose build```
-4. Tietokannan puutostilaan aja ylos tietokanta docker ```docker-compose up db``` ja mankeloi tietokanta railsilla kuntoon ```docker-compose run --rm nakkikone rake db:setup```. Sammuta sen jälkeen db container.
+4. Aaja tietokanta docker ylos ```docker-compose up db```
+5. Mankeloi tuotannon tietokanta railsilla kuntoon ```docker-compose run --rm nakkikone rake db:setup```.
+6. Aktivoi development ja testi ymparisto ```./env``` variaabelien kautta ja aja sama rimpsu ```docker-compose run --rm nakkikone rake db:setup```
+7. Sammuta db container.
 
 Nyt tuotannon kaltainen kehitysympäristö tulisi olla pystyssä. Jos näet että Nakkikone käynnistyy ennen tietokantaa, aja alas (ctrl-c) ja käynnistä uudelleen ```docker-compose up``` (tiedetty ongelma).
+
+Kun haluat devata lokaalisti kayta `development` ymparistoa (kayta kontti alhaalla). Kun
+haluat kokeilla tuotantoa vastaavaa, vaihda ymparisto `production` ja buildaa kontti uudelleen ```docker-compose up --build```. Jos homma rokkaa voi kontin laittaa ajoon tuotanto pannulle (eli meidan tapauksessa kayda kaantamassa se siella).
 
 ### Ilman dokkeria
 
@@ -44,23 +55,9 @@ Masterin travis build löytyy täältä: https://travis-ci.org/EntropyRy/nakkiko
 
 ## Deployaaminen
 
-Nakkikone deployataan docker containerina. Aja initialisointi ja muokkaa konfigurointi salaisuudet kuntoon.
+Nakkikone deployataan docker containerina. Jos olet pystyttamassa uutta ymparistoa seuraa kehitysympariston ohjeita.
 
-Pystyta applikaatio docker-composella,
+Jos olet paivittamassa vanhaa, tulee sinun vain ladata uusimmat sorsat githubista, buildata docker compose uudestaan
+ja restartata setti.
 
-```
-sudo docker-compose up --build
-```
-
-Kaynnistyksen jalkeen bootsrappaukseen taulut ja initial datan voidaan luoda seuraavasti:
-
-```sh
-sudo docker-compose run --rm nakkikone rake db:setup
-```
-
-Tai upgradettaessa vanhasta, konffaa composen mysql volume joka sisaltaa dumpattavan sisallon.
-
-```
-volumes:
-    - ./docker/data:/docker-entrypoint-initdb.d
-```
+Jos koko paske meni levyksi, vanhat datat voi dumpata kun docker db initialisoidaan laittamalla scriptit ```./db/docker/``` kansioon. HUOMIO: Älä koskaan version hallinnoi mitään näistä dumpeista, ne ovat hyvin todennäköisesti ihmisten henkilökohtaista dataa.

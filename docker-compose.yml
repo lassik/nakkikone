@@ -4,8 +4,8 @@ services:
   db:
     image: mysql:5.7
     volumes:
-      - ./docker-volumes/nakkikone_db_data:/var/lib/mysql
-      - ./docker-volumes/migration_data:/docker-entrypoint-initdb.d
+      - ./docker-volumes/nakkikone_db/:/var/lib/mysql
+      - ./db/docker/:/docker-entrypoint-initdb.d
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${APP_DB_ROOTPASSWORD}
