@@ -1,8 +1,8 @@
 #! /bin/bash -x
 
 ## clean up potential old garbage
+rm -rf ./vendor/bundle/
 rm -rf ./tmp/
-rm -rf ./nakkikone_db_data/
 rm .env config/{database,email,secrets}.yml
 
 ## checkout submodules

@@ -4,8 +4,8 @@ services:
   db:
     image: mysql:5.7
     volumes:
-      - ./nakkikone_db_data:/var/lib/mysql
-      - ./tmp/migration_data:/docker-entrypoint-initdb.d
+      - ./docker-volumes/nakkikone_db_data:/var/lib/mysql
+      - ./docker-volumes/migration_data:/docker-entrypoint-initdb.d
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${APP_DB_ROOTPASSWORD}
@@ -16,7 +16,7 @@ services:
   nakkikone:
     image: 'nakkikone:${VERSION}'
     build: .
-#    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
     restart: always
     volumes:
       - .:/srv/rails/nakkikone

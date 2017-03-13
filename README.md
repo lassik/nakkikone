@@ -10,10 +10,10 @@ Työkalu masinoida tapahtumaan tarvittavat työvuorot. Koostuu käyttäjille nä
 
 1. Asenna docker tyokalut (docker-compose >~ 1.6 ja docker) sekä konfiguroi käyttöoikeudet kuntoon (lue Dockerin ohjeet)
 2. Aja kehitysympäristön alustus skripti ```./initialize-development-environment.sh```
-3. Buildaa ensimmainen nakkikone & db docker containers ```docker-compose up --build```
-4. Tietokannan puutostilaan aja ```docker-compose run --rm nakkikone rake db:setup```
+3. Buildaa ensimmainen nakkikone & db docker containers ```docker-compose build```
+4. Tietokannan puutostilaan aja ylos tietokanta docker ```docker-compose up db``` ja mankeloi tietokanta railsilla kuntoon ```docker-compose run --rm nakkikone rake db:setup```. Sammuta sen jälkeen db container.
 
-Nyt tuotannon kaltainen kehitysympäristö tulisi olla pystyssä. Jos näet että Nakkikone käynnistyy ennen tietokantaa, aja alas (ctrl-c) ja käynnistä uudelleen ```docker-compouse up``` (tiedetty ongelma).
+Nyt tuotannon kaltainen kehitysympäristö tulisi olla pystyssä. Jos näet että Nakkikone käynnistyy ennen tietokantaa, aja alas (ctrl-c) ja käynnistä uudelleen ```docker-compose up``` (tiedetty ongelma).
 
 ### Ilman dokkeria
 

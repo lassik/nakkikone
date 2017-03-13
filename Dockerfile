@@ -13,10 +13,17 @@ RUN mkdir -p $INSTALL_PATH
 
 WORKDIR $INSTALL_PATH
 
-COPY Gemfile Gemfile
+## initialize application environment
+COPY Gemfile .
 
+## install environment
 RUN bundle install
 
-ENTRYPOINT $INSTALL_PATH/start-nakkikone.sh
+## copy application code into working directory, ignored files and folders are listed in .dockerignore
+COPY . .
 
+## precompile assets into pipeline
+RUN bundle exec rake assets:precompile
+
+CMD ["bundle" "exec" "rails" "s" "-p" "3000" "-b" "0.0.0.0"]
 
