@@ -18,7 +18,6 @@ HUOM: tee nama ohjeet ajatuksen kanssa.
 3. Buildaa ensimmainen nakkikone & db docker containers ```docker-compose build```
 4. Aaja tietokanta docker ylos ```docker-compose up db```
 5. Mankeloi tuotannon tietokanta railsilla kuntoon ```docker-compose run --rm nakkikone rake db:setup```.
-6. Aktivoi development ja testi ymparisto ```./env``` variaabelien kautta ja aja sama rimpsu ```docker-compose run --rm nakkikone rake db:setup```
 7. Sammuta db container.
 
 Nyt tuotannon kaltainen kehitysympäristö tulisi olla pystyssä. Jos näet että Nakkikone käynnistyy ennen tietokantaa, aja alas (ctrl-c) ja käynnistä uudelleen ```docker-compose up``` (tiedetty ongelma).

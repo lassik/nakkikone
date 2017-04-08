@@ -1,27 +1,38 @@
+# git files
 .git
 .gitignore
 .gitmodules
 
+# docker files
 .dockerignore
 docker-compose.yml
 Dockerfile
 
+# deprecated files
 .rvmrc
 .travis.yml
 .projectile
 
+# initialization scripts
 initialize-development-environment.sh
 
+# other tools
 Capfile
 Procfile
 
+# do not need there
 README.md
 
+# avoid temporary files
 Gemfile.lock
-.bundle/*
-
+.bundle
 doc/*
 tmp/*
 log/*
+vendor/bundle/*
+public/assets/*
 
+# do not copy other containers data into this container
 docker-volumes/*
+# or bootstrap data either
+db/docker/*

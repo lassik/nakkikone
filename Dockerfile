@@ -13,14 +13,11 @@ RUN mkdir -p $INSTALL_PATH
 
 WORKDIR $INSTALL_PATH
 
-## initialize application environment
-COPY Gemfile .
-
-## install environment
-RUN bundle install
-
 ## copy application code into working directory, ignored files and folders are listed in .dockerignore
 COPY . .
+
+## install environment application locally
+RUN bundle install
 
 ## precompile assets into pipeline
 RUN bundle exec rake assets:precompile
