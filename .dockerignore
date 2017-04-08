@@ -24,7 +24,6 @@ Procfile
 README.md
 
 # avoid temporary files
-Gemfile.lock
 .bundle
 doc/*
 tmp/*

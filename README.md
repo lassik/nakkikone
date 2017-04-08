@@ -22,8 +22,7 @@ HUOM: tee nama ohjeet ajatuksen kanssa.
 
 Nyt tuotannon kaltainen kehitysympäristö tulisi olla pystyssä. Jos näet että Nakkikone käynnistyy ennen tietokantaa, aja alas (ctrl-c) ja käynnistä uudelleen ```docker-compose up``` (tiedetty ongelma).
 
-Kun haluat devata lokaalisti kayta `development` ymparistoa (kayta kontti alhaalla). Kun
-haluat kokeilla tuotantoa vastaavaa, vaihda ymparisto `production` ja buildaa kontti uudelleen ```docker-compose up --build```. Jos homma rokkaa voi kontin laittaa ajoon tuotanto pannulle (eli meidan tapauksessa kayda kaantamassa se siella).
+Kun haluat devata lokaalisti kayta `development` ymparistoa ja mountaa host directory `docker-compose.yml`:stä (käytä kontti myös alhaalla). Kun haluat kokeilla tuotantoa vastaavaa, vaihda ymparisto `production` ja buildaa kontti uudelleen ```docker-compose up --build```. Jos homma rokkaa voi kontin laittaa ajoon tuotanto pannulle (eli meidan tapauksessa kayda kaantamassa se siella).
 
 ### Ilman dokkeria
 
@@ -56,7 +55,11 @@ Masterin travis build löytyy täältä: https://travis-ci.org/EntropyRy/nakkiko
 
 Nakkikone deployataan docker containerina. Jos olet pystyttamassa uutta ymparistoa seuraa kehitysympariston ohjeita.
 
-Jos olet paivittamassa vanhaa, tulee sinun vain ladata uusimmat sorsat githubista, buildata docker compose uudestaan
-ja restartata setti.
+Jos olet paivittamassa vanhaa, tulee sinun vain ladata uusimmat sorsat githubista, buildata docker compose uudestaan ja restartata setti.
 
-Jos koko paske meni levyksi, vanhat datat voi dumpata kun docker db initialisoidaan laittamalla scriptit ```./db/docker/``` kansioon. HUOMIO: Älä koskaan version hallinnoi mitään näistä dumpeista, ne ovat hyvin todennäköisesti ihmisten henkilökohtaista dataa.
+1. ```docker-compose down```
+2. ```git pull```
+3. ```docker-compose build```
+4. ```docker-compose up```
+
+Jos koko paske meni levyksi, vanhat datat voi dumpata kun docker db initialisoidaan laittamalla scriptit ```./db/docker/``` kansioon. HUOMIO: Älä koskaan version hallinnoi mitään näistä dumpeista, ne ovat ihmisten henkilökohtaista dataa.
