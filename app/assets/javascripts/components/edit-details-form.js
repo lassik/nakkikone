@@ -19,8 +19,8 @@ define([
 		return acc;
 	    }, {});
 	    var self = this;
-	    this.model.save(data, {url: "yourself",
-		wait:true,
+	    this.model.save(data, { url: "yourself",
+		wait: true,
 		success: function() {
 		    $('#user-action-dialog').modal('show');
 		},
