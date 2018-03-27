@@ -22,5 +22,8 @@ RUN bundle install
 ## precompile assets into pipeline
 RUN bundle exec rake assets:precompile
 
+## patch problem with hardcoded image urls in vendor css
+RUN cp $INSTALL_PATH/app/assets/images/glyphicons-halflings.png $INSTALL_PATH/public/assets/glyphicons-halflings.png
+
 CMD ["bundle" "exec" "rails" "s" "-p" "3000" "-b" "0.0.0.0"]
 
