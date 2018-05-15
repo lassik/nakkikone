@@ -4,6 +4,7 @@ RailStrap::Application.routes.draw do
 
   post "sign_up" => "users#new", :as => "sign_up"
   put "yourself" => "users#update"
+  delete "yourself" => "users#delete"
 
   put "reset_password" => "users#reset_password"
 

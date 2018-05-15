@@ -43,6 +43,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def delete
+    ## TODO should be done via :has_many, :dependent destroy in model declaration
+    AuxNakki.where(:user => current_user).map{ |aux| aux.delete }
+    Nakki.where(:user => current_user).map{ |nakki|
+      nakki.user = nil
+      nakki.save
+    }
+    if current_user.destroy
+      session[:user_id] = nil
+      render :status => 202, :text "done"
+    else
+      errors = current_user.errors
+      @current_user = User.find(session[:user_id])
+      render :status => 400, :json => errors
+    end
+  end
+
   private
 
   def user_params
