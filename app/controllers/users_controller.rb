@@ -52,7 +52,7 @@ class UsersController < ApplicationController
     }
     if current_user.destroy
       session[:user_id] = nil
-      render :status => 202, :text "done"
+      render :status => 202, :text => "done"
     else
       errors = current_user.errors
       @current_user = User.find(session[:user_id])
